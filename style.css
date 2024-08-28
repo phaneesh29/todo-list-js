@@ -47,7 +47,7 @@ header.header{
     box-shadow: 3px 4px 11px #818181ee, inset -5px 1px 20px 1px #454545;
 }
 #task-list{
-    width: 92vw;
+    width: 95vw;
     padding: 30px;
     display: flex;
     justify-content: center;

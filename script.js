@@ -20,6 +20,22 @@ window.addEventListener("DOMContentLoaded", () => {
             alert("Noting To Update")
         }
     })
+    inputTask.addEventListener("keydown", (e) => {
+        if (e.key == "Enter") {
+            if (inputTask.value) {
+                let taskObj = {}
+
+                taskObj.taskName = inputTask.value
+                taskObj.isComplete = false
+                taskObj.created = new Date
+                upDateTaskArray(taskObj)
+                inputTask.value = ""
+            }
+            else {
+                alert("Noting To Update")
+            }
+        }
+    })
 
     function upDateTaskArray(taskObj) {
         myTaskArray.push(taskObj)
@@ -47,8 +63,8 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        document.querySelectorAll(".lis").forEach((li)=>{
-            li.addEventListener("click",(e)=>{
+        document.querySelectorAll(".lis").forEach((li) => {
+            li.addEventListener("click", (e) => {
                 const index = e.currentTarget.getAttribute("data-index");
                 taskcomplete(index);
             })
@@ -56,12 +72,12 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     function removeTask(index) {
-        myTaskArray.splice(index,1);
+        myTaskArray.splice(index, 1);
         localStorage.setItem("myTaskArray", JSON.stringify(myTaskArray));
         upDateUI(myTaskArray);
     }
 
-    function taskcomplete(index){
+    function taskcomplete(index) {
         myTaskArray[index].isComplete = myTaskArray[index].isComplete ? false : true
         localStorage.setItem("myTaskArray", JSON.stringify(myTaskArray));
         upDateUI(myTaskArray);

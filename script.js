@@ -83,4 +83,35 @@ window.addEventListener("DOMContentLoaded", () => {
         upDateUI(myTaskArray);
     }
 
+
+    function requestNotificationPermission() {
+        if (Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+    }
+
+    // Send notification for incomplete tasks
+    function notifyIncompleteTasks() {
+        const incompleteTasks = myTaskArray.filter(task => !task.isComplete);
+        if (incompleteTasks.length > 0) {
+            const taskNames = incompleteTasks.map(task => task.taskname).join(', ');
+            const notificationMessage = `You have ${incompleteTasks.length} incomplete task(s): ${taskNames}`;
+            
+            if (Notification.permission === 'granted') {
+                const notification = new Notification('Incomplete Tasks Reminder', {
+                    body: notificationMessage,
+                });
+
+                notification.onclick = () => {
+                    window.focus();
+                };
+            }
+        }
+    }
+
+
+    setInterval(notifyIncompleteTasks, 60000); 
+
+    window.onload = requestNotificationPermission;
 })
+

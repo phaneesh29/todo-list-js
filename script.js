@@ -96,7 +96,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (incompleteTasks.length > 0) {
             const taskNames = incompleteTasks.map(task => task.taskname).join(', ');
             const notificationMessage = `You have ${incompleteTasks.length} incomplete task(s): ${taskNames}`;
-            
+
             if (Notification.permission === 'granted') {
                 const notification = new Notification('Incomplete Tasks Reminder', {
                     body: notificationMessage,
@@ -110,7 +110,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    setInterval(notifyIncompleteTasks, 60000); 
+    setInterval(notifyIncompleteTasks, 60000);
 
     window.onload = requestNotificationPermission;
 })

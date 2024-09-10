@@ -94,7 +94,7 @@ window.addEventListener("DOMContentLoaded", () => {
     function notifyIncompleteTasks() {
         const incompleteTasks = myTaskArray.filter(task => !task.isComplete);
         if (incompleteTasks.length > 0) {
-            const taskNames = incompleteTasks.map(task => task.taskname).join(', ');
+            const taskNames = incompleteTasks.map(task => task.taskName).join(', ');
             const notificationMessage = `You have ${incompleteTasks.length} incomplete task(s): ${taskNames}`;
 
             if (Notification.permission === 'granted') {

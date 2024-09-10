@@ -112,6 +112,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     setInterval(notifyIncompleteTasks, 60000);
 
-    window.onload = requestNotificationPermission;
+    requestNotificationPermission();
 })
 
